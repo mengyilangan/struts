@@ -1,6 +1,7 @@
 package com.jqn.learn.struts.register.action;
 
 import com.jqn.learn.struts.helloworld.model.Person;
+import com.jqn.learn.struts.register.exceptions.SecurityBreachException;
 import com.opensymphony.xwork2.ActionSupport;
 
 /**
@@ -26,8 +27,12 @@ public class Register extends ActionSupport {
         personBean = person;
     }
 
+    public String throwSecurityException() throws SecurityBreachException {
+        throw new SecurityBreachException("");
+    }
+
     public void validate() {
-        if (personBean.getFirstName().length() == 0) {
+       /* if (personBean.getFirstName().length() == 0) {
             addFieldError("personBean.firstName", "First name is required.");
         }
 
@@ -37,6 +42,6 @@ public class Register extends ActionSupport {
 
         if (personBean.getAge() < 18) {
             addFieldError("personBean.age", "Age is required and must be 18 or older");
-        }
+        }*/
     }
 }
